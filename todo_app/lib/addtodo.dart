@@ -21,41 +21,44 @@ class _AddTodoState extends State<AddTodo> {
         textDirection: TextDirection.ltr), 
         backgroundColor:const Color.fromARGB(255,26, 93, 193),
       ),
-      body:  Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Directionality(
+      body:  Directionality(
           textDirection: TextDirection.ltr,
-          child: Padding(
-            padding: const EdgeInsets.all(80.0),
-            child: Column(
+          child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextFormField(
-                  controller: inputTextController,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    fillColor: Colors.white,
-                    filled: true,
-                    hintText: "Titulo",
-                    hintTextDirection: TextDirection.ltr,
-                    ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 0,horizontal: 20),
+                  child: TextFormField(
+                    controller: inputTextController,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      fillColor: Colors.white,
+                      filled: true,
+                      hintText: "Titulo",
+                      hintTextDirection: TextDirection.ltr,
+                      isDense: true,
+                      ),
+                  ),
                 ),
-                ElevatedButton(onPressed:(){
-                  setState(() {
-                     widget.todoList.add(Todo(name: inputTextController.text) );
-                });
-                Navigator.push(context,MaterialPageRoute(builder: (context)=>MyApp(todoList: widget.todoList)));
-                },style: ButtonStyle(fixedSize: MaterialStateProperty.all(const Size(500,40)), backgroundColor: MaterialStateProperty.resolveWith((states) => const Color.fromARGB(255,26, 93, 193)),shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)
-                  )
-                ))
-                , child: const Text("Adicionar", style: TextStyle(color: Colors.black), textDirection: TextDirection.ltr,))
+                Padding(
+                  padding: const EdgeInsets.all(45.0),
+                  child: ElevatedButton(onPressed:(){
+                    setState(() {
+                      if (inputTextController.text!=""){
+                        widget.todoList.add(Todo(name: inputTextController.text) );
+                      }
+                  });
+                  Navigator.push(context,MaterialPageRoute(builder: (context)=>MyApp(todoList: widget.todoList)));
+                  },style: ButtonStyle(fixedSize: MaterialStateProperty.all(const Size(500,40)), backgroundColor: MaterialStateProperty.resolveWith((states) => const Color.fromARGB(255,26, 93, 193)),shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)
+                    )
+                  ))
+                  , child: const Text("Adicionar", style: TextStyle(color: Colors.black), textDirection: TextDirection.ltr,)),
+                )
               ]
             ),
-          ),
         ),
-      ),
     );
   }
 }
