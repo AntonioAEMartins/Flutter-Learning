@@ -58,72 +58,76 @@ class _MyAppState extends State<MyApp> {
               )
               ] 
              ): 
-              Align(
-                alignment: Alignment.topCenter,
-                child: ListView.builder(
-                    padding: const EdgeInsets.only(top: 8),
-                    shrinkWrap: true,
-                    itemCount: widget.todoList.length,
-                    itemBuilder: (context, index){
-                      return 
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: ListTile(
-                              // ignore: prefer_const_constructors
-                              leading: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.transparent,
-                                      elevation: 0,
-                                      shadowColor: Colors.transparent
-                                    ),
-                                    onPressed: (){
-                                      setState(() {
-                                      widget.todoList[index].state=!widget.todoList[index].state;
-                                    }); 
-                                    },
-                                    child: (widget.todoList[index].state==true?
-                                     Ink(
-                                      decoration: ShapeDecoration(
-                                        color: Colors.green,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:BorderRadius.circular(0),
-                                          side: const BorderSide(
-                                            color: Colors.black,
-                                            width: 2,
+                SizedBox(
+                  height: 80,
+                  child: 
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: widget.todoList.length,
+                          itemBuilder: (context, index) {
+                            return Align(
+                              alignment: Alignment.center,
+                              child: ListTile(
+                                // ignore: prefer_const_constructors
+                                leading: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.transparent,
+                                        elevation: 0,
+                                        shadowColor: Colors.transparent
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          widget.todoList[index].state = !widget.todoList[index].state;
+                                        });
+                                      },
+                                      child: (widget.todoList[index].state == true
+                                          ? Ink(
+                                              decoration: ShapeDecoration(
+                                                color: Colors.green,
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.circular(0),
+                                                  side: const BorderSide(
+                                                    color: Colors.black,
+                                                    width: 2,
+                                                  ),
+                                                ),
+                                              ),
+                                              child: const SizedBox(
+                                                width: 16,
+                                                height: 16,
+                                              ),
                                             )
-                                          )
-                                        ),
-                                        child: const SizedBox(
-                                          width: 16,
-                                          height: 16,
-                                        ),
-                                    ):
-                                    Ink(
-                                      decoration: ShapeDecoration(
-                                        color: Colors.grey,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:BorderRadius.circular(0),
-                                          side: const BorderSide(
-                                            color: Colors.black,
-                                            width: 2,
-                                            )
-                                          )
-                                        ),
-                                        child: const SizedBox(
-                                          width: 16,
-                                          height: 16,
-                                        ),
-                                    )))
-                                ],
+                                          : Ink(
+                                              decoration: ShapeDecoration(
+                                                color: Colors.grey,
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.circular(0),
+                                                  side: const BorderSide(
+                                                    color: Colors.black,
+                                                    width: 2,
+                                                  ),
+                                                ),
+                                              ),
+                                              child: const SizedBox(
+                                                width: 16,
+                                                height: 16,
+                                              ),
+                                            )),
+                                    )
+                                  ],
+                                ),
+                                title: Text(widget.todoList[index].name,
+                                    style: const TextStyle(fontWeight: FontWeight.bold)),
                               ),
-                              title: Text(widget.todoList[index].name,style: const TextStyle(fontWeight:FontWeight.bold),),
-                            ),
-                          );
-                    }
-                  ),
+                            );
+                          },
+                        ),
+                      ),
               )
             ),
           ),
