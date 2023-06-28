@@ -59,17 +59,15 @@ class _MyAppState extends State<MyApp> {
               ] 
              ): 
                 SizedBox(
-                  height: 80,
                   child: 
                       Align(
                         alignment: Alignment.topCenter,
                         child: ListView.builder(
+                          padding:EdgeInsets.only(left: MediaQuery.of(context).size.width*0.21),
                           shrinkWrap: true,
                           itemCount: widget.todoList.length,
                           itemBuilder: (context, index) {
-                            return Align(
-                              alignment: Alignment.center,
-                              child: ListTile(
+                            return  ListTile(
                                 // ignore: prefer_const_constructors
                                 leading: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -123,8 +121,7 @@ class _MyAppState extends State<MyApp> {
                                 ),
                                 title: Text(widget.todoList[index].name,
                                     style: const TextStyle(fontWeight: FontWeight.bold)),
-                              ),
-                            );
+                              ); 
                           },
                         ),
                       ),
