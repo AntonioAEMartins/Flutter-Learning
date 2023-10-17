@@ -48,7 +48,7 @@ class _AddTodoState extends State<AddTodo> {
                         widget.todoList.add(Todo(name: inputTextController.text) );
                       }
                   });
-                  Navigator.push(context,MaterialPageRoute(builder: (context)=>MyApp(todoList: widget.todoList)));
+                  Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>MyApp(todoList: widget.todoList)));
                   },style: ButtonStyle(fixedSize: MaterialStateProperty.all(const Size(500,40)), backgroundColor: MaterialStateProperty.resolveWith((states) => const Color.fromARGB(255,26, 93, 193)),shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)

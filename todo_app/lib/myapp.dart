@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
                     elevation: 0,
                     backgroundColor: const Color.fromARGB(255,26, 93, 193),
                     onPressed: (){
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context, 
                         MaterialPageRoute(
                           builder: (context)=>AddTodo(todoList: widget.todoList),
